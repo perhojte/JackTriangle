@@ -1,0 +1,25 @@
+// Triangle program
+// Determines if a triangle is equilateral, isosceles or scalene.
+// If the given lengths do not fulfill the triangle inequality, an error value is returned. 
+
+class Main {
+	function void main() {
+		var int a, b, c;
+		var Triangle t;
+
+		// Ask the user for the 3 side lengths.
+		do Output.printString("What are the side lengths of the triangle?");
+		do Output.println();
+		let a = Keyboard.readInt("a: ");
+		let b = Keyboard.readInt("b: ");
+		let c = Keyboard.readInt("c: ");
+
+		// Construct the triangle.
+		let t = Triangle.new(a, b, c);
+
+		// Write out the type of triangle we are dealing with.
+		do t.print();
+		
+		return;
+	}
+}

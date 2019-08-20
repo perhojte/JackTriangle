@@ -1,0 +1,79 @@
+class Triangle {
+	field int _a, _b, _c;
+	field String _type;
+	
+	constructor Triangle new(int a, int b, int c) {
+		let _a = a;
+		let _b = b;
+		let _c = c;
+		do validateInput();
+		let _type = String.new(20);
+		do calculateType();
+		return this;
+	}
+
+	method void validateInput() {
+		if (_a < 1) {
+			do Output.printString("Invalid side length: a=");
+			do Output.printInt(_a);
+			do Output.println();
+			do Sys.error(1);
+		}
+		if (_b < 1) {
+			do Output.printString("Invalid side length: b=");
+			do Output.printInt(_b);
+			do Output.println();
+			do Sys.error(1);
+		}
+		if (_c < 1) {
+			do Output.printString("Invalid side length: c=");
+			do Output.printInt(_c);
+			do Output.println();
+			do Sys.error(1);
+		}
+		if (_a+_b < _c) {
+			do Output.printString("Invalid triangle: a+b > c");
+			do Output.println();
+			do Sys.error(1);
+		}
+		if (_a+_c < _b) {
+			do Output.printString("Invalid triangle: a+c > b");
+			do Output.println();
+			do Sys.error(1);
+		}
+		if (_b+_c < _a) {
+			do Output.printString("Invalid triangle: b+c > a");
+			do Output.println();
+			do Sys.error(1);
+		}
+		return;
+	}
+	
+	method void calculateType() {
+		if ((_a = _b) & (_b = _c)) {
+			let _type = "equilateral";
+		}
+		else {
+			if ((_a = _b) | (_b = _c) | (_a = _c)) {
+				let _type = "isosceles";
+			}
+			else {
+				let _type = "scalene";
+			}
+		}
+		return;
+	}
+	
+	method void print() {
+		do Output.printString("I am a triangle with sides: a=");
+		do Output.printInt(_a);
+		do Output.printString(", b=");
+		do Output.printInt(_b);
+		do Output.printString(", c=");
+		do Output.printInt(_c);
+		do Output.println();
+		do Output.printString("Type: ");
+		do Output.printString(_type);
+		return;
+	}
+}
